@@ -36,6 +36,7 @@ public class Employee implements Serializable {
     private LocalDateTime createTime;
 
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //可以保证转成json时格式正确
     private LocalDateTime updateTime;
 
     private Long createUser;
