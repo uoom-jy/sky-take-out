@@ -24,8 +24,8 @@
             <if test="status != null">status = #{status},</if>
             <if test="username != null and username !=''">username = #{username},</if>
             <if test="password != null and password !=''">password = #{password},</if>
-            <if test="updateTime != null and updateTime !=''">update_time = #{updateTime},</if>
-            <if test="updateUser != null and updateUser !=''">update_user = #{updateUser},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="updateUser != null ">update_user = #{updateUser},</if>
         </set>
         where id = #{id}
     </update>
