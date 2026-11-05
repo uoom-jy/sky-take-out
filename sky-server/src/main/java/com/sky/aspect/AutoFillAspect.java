@@ -2,6 +2,7 @@ package com.sky.aspect;
 
 import com.sky.annotation.AutoFill;
 import com.sky.constant.AutoFillConstant;
+import com.sky.context.BaseContext;
 import com.sky.enumeration.OperationType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -43,7 +44,7 @@ public class AutoFillAspect {
         Object entity = args[0];
         //准备赋值的数据
         LocalDateTime now = LocalDateTime.now();
-        Long currentId = Thread.currentThread().getId();
+        Long currentId = BaseContext.getCurrentId();
 
         //根据当前操作类型，利用反射进行赋值
         if (operationType == OperationType.INSERT) {

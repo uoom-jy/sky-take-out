@@ -14,6 +14,8 @@
 
     </insert>
 
+
+
     <!-- 菜品分页查询-->
 
     <select id="pageQuery" resultType="com.sky.vo.DishVO">
@@ -33,7 +35,42 @@
     </select>
 
 
+    <!-- 批量删除菜品 -->
+    <delete id="deleteBatch">
+        delete from dish where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
+
+    <!-- 根据id修改菜品 -->
+    <update id="update">
+        update dish
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            update_time = #{updateTime},
+            update_user = #{updateUser}
+        </set>
+        where id = #{id}
+    </update>
 
 
 </mapper>
